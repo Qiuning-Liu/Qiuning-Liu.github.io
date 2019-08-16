@@ -1,0 +1,75 @@
+reference:
+- title: MAP
+  desc: 与MAP相关的计算函数
+  contents:
+  - '`dim1_MAP`'
+  - '`dim1_NORM`'
+  - '`dim2_norm_gh`'
+  - '`dim2_norm_map`'
+  - '`dim2_score1`'
+  - '`dim2_score2`'
+  - '`EQ_out`'
+  - '`EQ_tran`'
+  - '`tran_map`'
+  - '`tran_map_bi`'
+  - '`leader_style`'
+  - '`vocation_pref`'
+  - '`decision_style`'
+  - '`interview_report`'
+  - '`comptcy_report`'
+  - '`develop_report`'
+- title: POFIT相关
+  desc: ~
+  contents:
+  - '`pofit_15value`'
+  - '`pofit_4value`'
+  - '`pofit_4value_map`'
+  - '`pofit_map`'
+- title: 其他产品
+  desc: ~
+  contents:
+  - '`GWM_tran`'
+  - '`HPT_tran`'
+  - '`dim1_DISC`'
+  - '`dim1_EQT`'
+  - '`dim1_GWM`'
+  - '`dim1_PPF`'
+  - '`PPF_tran`'
+  - '`dim2_score`'
+  - '`tran_pofit`'
+- title: L78Z
+  desc: ~
+  contents:
+  - '`round2`'
+  - '`Z_to_ten`'
+  - '`selec_rate`'
+  - '`split_col`'
+  - '`peo_stat`'
+
+toc:
+  depth: 2
+
+
+navbar:
+  structure:
+    left:
+    - home
+    - intro
+    - reference
+    - articles
+    - tutorials
+    - news
+    right: github
+  components:
+    home:
+      icon: fa-home fa-lg
+      href: index.html
+    reference:
+      text: 函数应用指南
+      href: reference/index.html
+    articles:
+      text: 下载
+      menu:
+      - text: 'advanced-r'
+        href: articles/advanced-r.pdf
+

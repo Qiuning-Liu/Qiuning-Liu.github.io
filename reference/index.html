@@ -76,7 +76,19 @@
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/index.html">函数应用指南</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    下载
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/advanced-r.pdf">advanced-r</a>
+    </li>
+  </ul>
 </li>
       </ul>
       
@@ -108,47 +120,11 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-map" class="hasAnchor"><a href="#section-map" class="anchor"></a>MAP</h2>
+          <p class="section-desc"><p>与MAP相关的计算函数</p></p>
         </th>
       </tr>
       <tr>
-        
-        <td>
-          <p><code><a href="comptcy_report.html">comptcy_report()</a></code> </p>
-        </td>
-        <td><p>胜任力语言导出.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="decision_style.html">decision_style()</a></code> </p>
-        </td>
-        <td><p>decision-making style.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="develop_report.html">develop_report()</a></code> </p>
-        </td>
-        <td><p>发展建议 导出.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dim1_DISC.html">dim1_DISC()</a></code> </p>
-        </td>
-        <td><p>caculate BST dimension score.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dim1_EQT.html">dim1_EQT()</a></code> </p>
-        </td>
-        <td><p>EQT dimension score.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dim1_GWM.html">dim1_GWM()</a></code> </p>
-        </td>
-        <td><p>GPT/MAT/WPT.</p></td>
-      </tr><tr>
         
         <td>
           <p><code><a href="dim1_MAP.html">dim1_MAP()</a></code> </p>
@@ -163,12 +139,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="dim1_PPF.html">dim1_PPF()</a></code> </p>
-        </td>
-        <td><p>PPF.</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="dim2_norm_gh.html">dim2_norm_gh()</a></code> </p>
         </td>
         <td><p>MAP-R 工行定制常模计算
@@ -180,16 +150,6 @@
           <p><code><a href="dim2_norm_map.html">dim2_norm_map()</a></code> </p>
         </td>
         <td><p>MAP high order dimension's norm.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dim2_score.html">dim2_score()</a></code> </p>
-        </td>
-        <td><p>MAP(OLD version) high order dimension's score.
-特殊MAP二级维度分数
-原因：MAP二级维度分数的计算会随着读入weights文件的变化而变化，当weights文件包含：
-c('推进者','执行者','完善者','协调者','合作者','外交者','创新者','评价者','专家',
-'关注人际','关注任务','关注整体','关注局部','稳健','变革') 时使用该函数。</p></td>
       </tr><tr>
         
         <td>
@@ -220,21 +180,15 @@ c('推进者','执行者','完善者','协调者','合作者','外交者','创�
       </tr><tr>
         
         <td>
-          <p><code><a href="GWM_tran.html">GWM_tran()</a></code> </p>
+          <p><code><a href="tran_map.html">tran_map()</a></code> </p>
         </td>
-        <td><p>GPT/MAT/WPT.</p></td>
+        <td><p>MAP.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="HPT_tran.html">HPT_tran()</a></code> </p>
+          <p><code><a href="tran_map_bi.html">tran_map_bi()</a></code> </p>
         </td>
-        <td><p>HPT &amp; all binary score -- only one right answer.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="interview_report.html">interview_report()</a></code> </p>
-        </td>
-        <td><p>面试问题 导出.</p></td>
+        <td><p>AB/AC/BC used in Mplus.</p></td>
       </tr><tr>
         
         <td>
@@ -244,10 +198,42 @@ c('推进者','执行者','完善者','协调者','合作者','外交者','创�
       </tr><tr>
         
         <td>
-          <p><code><a href="peo_stat.html">peo_stat()</a></code> </p>
+          <p><code><a href="vocation_pref.html">vocation_pref()</a></code> </p>
         </td>
-        <td><p>Demographic information.</p></td>
+        <td><p>occupation tendency.</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="decision_style.html">decision_style()</a></code> </p>
+        </td>
+        <td><p>decision-making style.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="interview_report.html">interview_report()</a></code> </p>
+        </td>
+        <td><p>面试问题 导出.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="comptcy_report.html">comptcy_report()</a></code> </p>
+        </td>
+        <td><p>胜任力语言导出.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="develop_report.html">develop_report()</a></code> </p>
+        </td>
+        <td><p>发展建议 导出.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-pofit-" class="hasAnchor"><a href="#section-pofit-" class="anchor"></a>POFIT相关</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="pofit_15value.html">pofit_15value()</a></code> </p>
@@ -271,6 +257,50 @@ c('推进者','执行者','完善者','协调者','合作者','外交者','创�
           <p><code><a href="pofit_map.html">pofit_map()</a></code> </p>
         </td>
         <td><p>POFIT人与组织匹配图导出，可选单图和组合图.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section--" class="hasAnchor"><a href="#section--" class="anchor"></a>其他产品</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="GWM_tran.html">GWM_tran()</a></code> </p>
+        </td>
+        <td><p>GPT/MAT/WPT.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="HPT_tran.html">HPT_tran()</a></code> </p>
+        </td>
+        <td><p>HPT &amp; all binary score -- only one right answer.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dim1_DISC.html">dim1_DISC()</a></code> </p>
+        </td>
+        <td><p>caculate BST dimension score.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dim1_EQT.html">dim1_EQT()</a></code> </p>
+        </td>
+        <td><p>EQT dimension score.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dim1_GWM.html">dim1_GWM()</a></code> </p>
+        </td>
+        <td><p>GPT/MAT/WPT.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dim1_PPF.html">dim1_PPF()</a></code> </p>
+        </td>
+        <td><p>PPF.</p></td>
       </tr><tr>
         
         <td>
@@ -280,9 +310,39 @@ c('推进者','执行者','完善者','协调者','合作者','外交者','创�
       </tr><tr>
         
         <td>
+          <p><code><a href="dim2_score.html">dim2_score()</a></code> </p>
+        </td>
+        <td><p>MAP(OLD version) high order dimension's score.
+特殊MAP二级维度分数
+原因：MAP二级维度分数的计算会随着读入weights文件的变化而变化，当weights文件包含：
+c('推进者','执行者','完善者','协调者','合作者','外交者','创新者','评价者','专家',
+'关注人际','关注任务','关注整体','关注局部','稳健','变革') 时使用该函数。</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tran_pofit.html">tran_pofit()</a></code> </p>
+        </td>
+        <td><p>POFIT 44题分数转换.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-l-z" class="hasAnchor"><a href="#section-l-z" class="anchor"></a>L78Z</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
           <p><code><a href="round2.html">round2()</a></code> </p>
         </td>
         <td><p>round2.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="Z_to_ten.html">Z_to_ten()</a></code> </p>
+        </td>
+        <td><p>Z to ten.</p></td>
       </tr><tr>
         
         <td>
@@ -298,33 +358,9 @@ c('推进者','执行者','完善者','协调者','合作者','外交者','创�
       </tr><tr>
         
         <td>
-          <p><code><a href="tran_map.html">tran_map()</a></code> </p>
+          <p><code><a href="peo_stat.html">peo_stat()</a></code> </p>
         </td>
-        <td><p>MAP.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tran_map_bi.html">tran_map_bi()</a></code> </p>
-        </td>
-        <td><p>AB/AC/BC used in Mplus.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tran_pofit.html">tran_pofit()</a></code> </p>
-        </td>
-        <td><p>POFIT 44题分数转换.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="vocation_pref.html">vocation_pref()</a></code> </p>
-        </td>
-        <td><p>occupation tendency.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Z_to_ten.html">Z_to_ten()</a></code> </p>
-        </td>
-        <td><p>Z to ten.</p></td>
+        <td><p>Demographic information.</p></td>
       </tr>
     </tbody>
     </table>
@@ -333,7 +369,10 @@ c('推进者','执行者','完善者','协调者','合作者','外交者','创�
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-map">MAP</a></li>
+      <li><a href="#section-pofit-">POFIT相关</a></li>
+      <li><a href="#section--">其他产品</a></li>
+      <li><a href="#section-l-z">L78Z</a></li>
     </ul>
   </div>
 </div>
