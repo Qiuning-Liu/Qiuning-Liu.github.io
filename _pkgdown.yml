@@ -72,4 +72,9 @@ navbar:
       menu:
       - text: 'advanced-r'
         href: articles/advanced-r.pdf
-
+      - text: '数据整理-1'
+        href: articles/data-transformation.pdf
+      - text: '数据整理-2'
+        href: articles/data-wrangling-cheatsheet.pdf
+      - text: 'rmarkdown'
+        href: articles/rmarkdown-reference.pdf
