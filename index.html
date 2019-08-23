@@ -10,7 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Caculate norm and the derived score·RDDQ">
-<meta property="og:description" content="智鼎在线分数计算的toolkit-增加pofit分数转换">
+<meta property="og:description" content="智鼎在线分数计算的toolkit-更改depends">
 <meta property="og:image" content="/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">RDDQ</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.6</span>
       </span>
     </div>
 
@@ -56,6 +56,15 @@
 <li>
       <a href="articles/advanced-r.pdf">advanced-r</a>
     </li>
+    <li>
+      <a href="articles/data-transformation.pdf">数据整理-1</a>
+    </li>
+    <li>
+      <a href="articles/data-wrangling-cheatsheet.pdf">数据整理-2</a>
+    </li>
+    <li>
+      <a href="articles/rmarkdown-reference.pdf">rmarkdown</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -77,41 +86,77 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <div id="rddq" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#rddq" class="anchor"></a>RDDQ <img src="reference/figures/logo.png" align="right" alt="" width="170">
+<a href="#rddq" class="anchor"></a>RDDQ <img src="../../RDDQ%20package/RDDQ/man/figures/logo.png" align="right" alt="" width="170">
 </h1></div>
 <p>RDDQ包主要用于计算MAP和POFIT产品的常模、导出分数，也可用于导出部分html版本的报告。也支持部分其他产品的常模计算，例如BST、PPF、EQT等。也可计算题目备择率、人口学统计等。</p>
-<p><em>ps:这个包是2018年秋宁同志在核验常模系统计算准确性时顺便开发的，是当时工作的一个产物，函数写的略显粗糙，但准确性来说应该没什么问题（如果有问题，那来找我吧😤）。</em></p>
+<p>ps:这个包是2018年秋宁同志在核验常模系统计算准确性时顺便开发的，是当时工作的一个产物，函数写的略显粗糙，但准确性来说应该没什么问题（如果.万一.不好意思.有问题，可自行debug，或者我们一起debug😤）。</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># 安装这个包之前，需要先安装以下几个包</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'dplyr'</span>, <span class="st">'tidyr'</span>, <span class="st">'data.table'</span>, <span class="st">'openxlsx'</span>, <span class="st">'tidyverse'</span>))</a>
 <a class="sourceLine" id="cb1-3" title="3"></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="co"># RDDQ包的压缩包需要到智鼎服务器上找一下（下载最新版本哟）：\\192.168.1.134\public\3-智鼎优源\4-常模计算\7、常模计算产出\Rcode归档</span></a>
-<a class="sourceLine" id="cb1-5" title="5">path &lt;-<span class="st"> "你存压缩包的路径/RDDQ_1.9.5.tar.gz"</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(path, <span class="dt">repos =</span> <span class="ot">NULL</span>, <span class="dt">type =</span> <span class="st">"source"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co"># RDDQ包的压缩包需要到智鼎服务器上找一下（下载最新版本哟）：</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co"># \\192.168.1.134\public\3-智鼎优源\4-常模计算\7、常模计算产出\Rcode归档</span></a>
+<a class="sourceLine" id="cb1-6" title="6">path &lt;-<span class="st"> "你存压缩包的路径/RDDQ_1.9.6.tar.gz"</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(path, <span class="dt">repos =</span> <span class="ot">NULL</span>, <span class="dt">type =</span> <span class="st">"source"</span>)</a></code></pre></div>
 <p>好了，如果你看到console里有<strong>好了</strong>俩中文字，或<strong>success</strong>，你就成功装上了嘻嘻嘻😻。</p>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>加载包</p>
+<div id="section" class="section level3">
+<h3 class="hasAnchor">
+<a href="#section" class="anchor"></a>加载包</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(RDDQ)</a></code></pre></div>
-<p>然后你就可以开始玩耍了，在使用任何一个函数之前，请务必看清楚函数内各个参数的要求哦。不然很容易算错数据。 下面列举一些经常出错的地方吧： 1、在<code>dim1_MAP</code>这个函数中，参数的指定非常重要↓</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">  <span class="co"># type=1时维度均分，type=10时维度10分</span></a>
-<a class="sourceLine" id="cb3-2" title="2">  res_dim &lt;-<span class="st"> </span><span class="kw"><a href="reference/dim1_MAP.html">dim1_MAP</a></span>(<span class="dt">dat =</span> res2, <span class="dt">data_tran =</span> data_tran, <span class="dt">type =</span> <span class="dv">1</span>,<span class="dt">item=</span><span class="dv">1</span>)  </a>
-<a class="sourceLine" id="cb3-3" title="3">  res_dim10 &lt;-<span class="st"> </span><span class="kw"><a href="reference/dim1_MAP.html">dim1_MAP</a></span>(<span class="dt">dat =</span> res2, <span class="dt">data_tran =</span> data_tran, <span class="dt">type =</span> <span class="dv">10</span>,<span class="dt">item=</span><span class="dv">1</span>)</a>
+<p>然后你就可以开始玩耍了，在使用任何一个函数之前，请务必看清楚函数内各个参数的要求哦。不然很容易算错数据。 下面列举一些经常出错的地方吧：</p>
+</div>
+<div id="dim1_map" class="section level3">
+<h3 class="hasAnchor">
+<a href="#dim1_map" class="anchor"></a>在<code>dim1_MAP</code>这个函数中，参数的指定非常重要↓</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">  <span class="co"># dat为转换后的-1,0,1计分的MAP数据</span></a>
+<a class="sourceLine" id="cb3-2" title="2">  <span class="co"># data_tran 为题维对应excel表格，即题目的维度归属</span></a>
+<a class="sourceLine" id="cb3-3" title="3">  <span class="co"># type=1时函数输出为维度均分，type=10时函数输出为维度10分</span></a>
 <a class="sourceLine" id="cb3-4" title="4">  <span class="co"># item为1时，不计分题目不参与计分，item为2时，全部题目参与计分</span></a>
-<a class="sourceLine" id="cb3-5" title="5">  res_dim &lt;-<span class="st"> </span><span class="kw"><a href="reference/dim1_MAP.html">dim1_MAP</a></span>(<span class="dt">dat =</span> res2, <span class="dt">data_tran =</span> data_tran, <span class="dt">type =</span> <span class="dv">1</span>,<span class="dt">item=</span><span class="dv">2</span>) </a></code></pre></div>
-<p>2、在进行MAP的数据转换时，使用<code>tran_map</code>这个函数，但老MAP和新MAP-R的区别在于一个没有负向计分题目，一个有部分负向计分题目，因此需指定哪些题目为负向计分，然后在<code>tran_map</code>里指定<code>tran=tran</code>即可↓</p>
+<a class="sourceLine" id="cb3-5" title="5">  res_dim &lt;-<span class="st"> </span><span class="kw"><a href="reference/dim1_MAP.html">dim1_MAP</a></span>(<span class="dt">dat =</span> res2, <span class="dt">data_tran =</span> data_tran, <span class="dt">type =</span> <span class="dv">1</span>,<span class="dt">item=</span><span class="dv">1</span>)  </a>
+<a class="sourceLine" id="cb3-6" title="6">  res_dim10 &lt;-<span class="st"> </span><span class="kw"><a href="reference/dim1_MAP.html">dim1_MAP</a></span>(<span class="dt">dat =</span> res2, <span class="dt">data_tran =</span> data_tran, <span class="dt">type =</span> <span class="dv">10</span>,<span class="dt">item=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb3-7" title="7">  res_dim &lt;-<span class="st"> </span><span class="kw"><a href="reference/dim1_MAP.html">dim1_MAP</a></span>(<span class="dt">dat =</span> res2, <span class="dt">data_tran =</span> data_tran, <span class="dt">type =</span> <span class="dv">1</span>,<span class="dt">item=</span><span class="dv">2</span>) </a></code></pre></div>
+</div>
+<div id="a-b01" class="section level3">
+<h3 class="hasAnchor">
+<a href="#a-b01" class="anchor"></a>A-B数据👉01数据</h3>
+<p>在进行MAP的数据转换时，使用<code>tran_map</code>这个函数，但老MAP和新MAP-R的区别在于一个没有负向计分题目，一个有部分负向计分题目，因此需指定哪些题目为负向计分，然后在<code>tran_map</code>里指定<code>tran=tran</code>即可↓</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">  tran &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/which">which</a></span>(data_tran<span class="op">$</span>正负向 <span class="op">==</span><span class="st"> "-"</span>)</a>
 <a class="sourceLine" id="cb4-2" title="2">  res2 &lt;-<span class="st"> </span><span class="kw"><a href="reference/tran_map.html">tran_map</a></span>(dat,<span class="dt">tran=</span>tran) <span class="co"># MAP-R</span></a>
 <a class="sourceLine" id="cb4-3" title="3">  res2 &lt;-<span class="st"> </span><span class="kw"><a href="reference/tran_map.html">tran_map</a></span>(dat) <span class="co"># 老MAP</span></a></code></pre></div>
-<p>3、在需要用到权重来计算分数时，需要注意权重文件的维度顺序是否和你算出的维度顺序一致，如果不一致需调整一致的顺序，然后再放入到<code>dim2_score</code>函数族中。<code>dim2_score</code>函数族包含三个函数：<code>dim2_score</code>,<code>dim2_score1</code>,<code>dim2_score2</code>。具体如何使用，见函数页介绍。</p>
 </div>
-<div id="section" class="section level2">
-<h2 class="hasAnchor">
-<a href="#section" class="anchor"></a>暂时没想到别的了，拜拜👀</h2>
+<div id="section-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#section-1" class="anchor"></a>计算常模与标准分数转换</h3>
+<p><code>scale</code>是用于将数据进行标准化的函数，它的输出包括标准化后的数据、均值<code>center</code>、标准差<code>scale</code>三个部分。 该函数可以指定均值和标准差，进而根据特定分布标准化数据。此函数在算常模、导出分数上起到了<strong>重要作用</strong>。 此处需要提醒的是，当计算任何数据时，常模数据与分数数据的维度顺序必须一致。也就是下方示例中的，dim2_score和srl_M,srl_SD的维度顺序需一致（不明白没关系，用的时候就知道了🤞）。 这种数据转换不止MAP可以用，只要是需要通过常模进行数据转换的操作都可以的！</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">dim2_zscore &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/scale">scale</a></span>(res_dim)  <span class="co">#将维度均分进行标准化</span></a>
+<a class="sourceLine" id="cb5-2" title="2">srl_zscore &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/scale">scale</a></span>(dim2_score,<span class="dt">center =</span> srl_M, <span class="dt">scale =</span> srl_SD)  <span class="co">#根据常模转换Z分数</span></a>
+<a class="sourceLine" id="cb5-3" title="3">norm &lt;-<span class="st"> </span><span class="kw"><a href="reference/dim1_NORM.html">dim1_NORM</a></span>(res_dim) <span class="co"># 这是封装的一个可直接输出标准化常模结果的函数，可直接使用哦</span></a></code></pre></div>
+</div>
+<div id="section-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#section-2" class="anchor"></a>二级维度分数计算</h3>
+<p>在需要用到权重来计算分数时，需要注意权重文件的维度顺序是否和你算出的维度顺序一致，可利用<code>dim2_score</code>函数族来计算二级维度分数。<code>dim2_score</code>函数族包含三个函数：<code>dim2_score</code>,<code>dim2_score1</code>,<code>dim2_score2</code>。具体如何使用，见函数页介绍。</p>
+</div>
+<div id="section-3" class="section level3">
+<h3 class="hasAnchor">
+<a href="#section-3" class="anchor"></a>报告语言导出</h3>
+<p>目前支持MAP的胜任力语言、发展建议和面试建议的语言导出，对应函数： <code>comptcy_report</code> <code>develop_report</code> <code>interview_report</code></p>
+</div>
+<div id="section-4" class="section level3">
+<h3 class="hasAnchor">
+<a href="#section-4" class="anchor"></a>报告导出</h3>
+<p>支持MAP结果概览页导出  支持POFIT报告导出（POFIT线下报告模板）</p>
+</div>
+<div id="section-5" class="section level3">
+<h3 class="hasAnchor">
+<a href="#section-5" class="anchor"></a>暂时没想到别的了，拜拜👀</h3>
+</div>
 </div>
 </div>
   </div>
