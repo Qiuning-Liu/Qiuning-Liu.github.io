@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EQ in MAP. — EQ_out • RDDQ</title>
+<title>返回模型验证相关结果 — model_check • RDDQ</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="EQ in MAP. — EQ_out" />
-<meta property="og:description" content="EQ in MAP." />
+<meta property="og:title" content="返回模型验证相关结果 — model_check" />
+<meta property="og:description" content="返回模型验证相关结果" />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -132,33 +132,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>EQ in MAP.</h1>
+    <h1>返回模型验证相关结果</h1>
     
-    <div class="hidden name"><code>EQ_out.Rd</code></div>
+    <div class="hidden name"><code>model_check.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>EQ in MAP.</p>
+    <p>返回模型验证相关结果</p>
     </div>
 
-    <pre class="usage"><span class='fu'>EQ_out</span>(<span class='no'>dim2_score</span>, <span class='kw'>zscore</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
+    <pre class="usage"><span class='fu'>model_check</span>(<span class='kw'>normData</span> <span class='kw'>=</span> <span class='no'>normdata</span>, <span class='kw'>weight</span> <span class='kw'>=</span> <span class='no'>weight</span>, <span class='kw'>Data</span> <span class='kw'>=</span> <span class='no'>data</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>group</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dim2_score</th>
-      <td><p>二级维度分数</p></td>
+      <th>normData</th>
+      <td><p>传入常模人群的性格Z分数数据</p></td>
     </tr>
     <tr>
-      <th>zscore</th>
-      <td><p>=1时输出为EQ的Z分数，默认为十分导出分</p></td>
+      <th>weight</th>
+      <td><p>matrix,第一列为顺序排列的维度名，第二列为-6~6的权重值</p></td>
+    </tr>
+    <tr>
+      <th>Data</th>
+      <td><p>包含APID、绩效分组和性格Z分数的数据</p></td>
+    </tr>
+    <tr>
+      <th>group</th>
+      <td><p>绩效分组的变量名</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>EQ维度分数</p>
+    <p>权重、常模、匹配度、匹配等级、交叉分析结果</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

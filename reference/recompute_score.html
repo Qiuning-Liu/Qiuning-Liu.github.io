@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EQ in MAP. — EQ_out • RDDQ</title>
+<title>重新算分（性格Z分数和胜任力Z分数&amp;标准十） — recompute_score • RDDQ</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="EQ in MAP. — EQ_out" />
-<meta property="og:description" content="EQ in MAP." />
+<meta property="og:title" content="重新算分（性格Z分数和胜任力Z分数&amp;标准十） — recompute_score" />
+<meta property="og:description" content="重新算分（性格Z分数和胜任力Z分数&amp;amp;标准十）" />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -132,33 +132,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>EQ in MAP.</h1>
+    <h1>重新算分（性格Z分数和胜任力Z分数&amp;标准十）</h1>
     
-    <div class="hidden name"><code>EQ_out.Rd</code></div>
+    <div class="hidden name"><code>recompute_score.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>EQ in MAP.</p>
+    <p>重新算分（性格Z分数和胜任力Z分数&amp;标准十）</p>
     </div>
 
-    <pre class="usage"><span class='fu'>EQ_out</span>(<span class='no'>dim2_score</span>, <span class='kw'>zscore</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
+    <pre class="usage"><span class='fu'>recompute_score</span>(
+  <span class='kw'>Data</span> <span class='kw'>=</span> <span class='no'>data</span>,
+  <span class='kw'>norm</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>data_tran</span> <span class='kw'>=</span> <span class='no'>data_tran</span>,
+  <span class='kw'>weights</span> <span class='kw'>=</span> <span class='no'>weights</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dim2_score</th>
-      <td><p>二级维度分数</p></td>
+      <th>Data</th>
+      <td><p>A-B数据/线上的维度均分,需包含APID</p></td>
     </tr>
     <tr>
-      <th>zscore</th>
-      <td><p>=1时输出为EQ的Z分数，默认为十分导出分</p></td>
+      <th>norm</th>
+      <td><p>常模数据（常模值）</p></td>
+    </tr>
+    <tr>
+      <th>data_tran</th>
+      <td><p>题维对应表</p></td>
+    </tr>
+    <tr>
+      <th>weights</th>
+      <td><p>胜任力权重表</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>EQ维度分数</p>
+    <p>性格Z分数和胜任力Z&amp;标准十</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

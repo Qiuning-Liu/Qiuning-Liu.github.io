@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EQ in MAP. — EQ_out • RDDQ</title>
+<title>MAP和MLE估计 — MAP.est • RDDQ</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="EQ in MAP. — EQ_out" />
-<meta property="og:description" content="EQ in MAP." />
+<meta property="og:title" content="MAP和MLE估计 — MAP.est" />
+<meta property="og:description" content="MAP和MLE估计" />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -132,33 +132,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>EQ in MAP.</h1>
+    <h1>MAP和MLE估计</h1>
     
-    <div class="hidden name"><code>EQ_out.Rd</code></div>
+    <div class="hidden name"><code>MAP.est.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>EQ in MAP.</p>
+    <p>MAP和MLE估计</p>
     </div>
 
-    <pre class="usage"><span class='fu'>EQ_out</span>(<span class='no'>dim2_score</span>, <span class='kw'>zscore</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
+    <pre class="usage"><span class='fu'>MAP.est</span>(<span class='no'>Y</span>, <span class='kw'>which.to.est</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>Y</span>), <span class='no'>a</span>, <span class='no'>d</span>, <span class='no'>BID</span>, <span class='kw'>sigma</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dim2_score</th>
-      <td><p>二级维度分数</p></td>
+      <th>Y</th>
+      <td><p>作答数据，312，代表条目3最符合，条目2最不符合</p></td>
     </tr>
     <tr>
-      <th>zscore</th>
-      <td><p>=1时输出为EQ的Z分数，默认为十分导出分</p></td>
+      <th>a</th>
+      <td><p>a参数</p></td>
+    </tr>
+    <tr>
+      <th>BID</th>
+      <td><p>题维对应</p></td>
+    </tr>
+    <tr>
+      <th>sigma</th>
+      <td><p>24维度相关矩阵</p></td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td><p>b参数</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>EQ维度分数</p>
+    <p>维度均分或原始十分</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

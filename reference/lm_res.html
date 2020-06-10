@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EQ in MAP. — EQ_out • RDDQ</title>
+<title>一元回归 — lm_res • RDDQ</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="EQ in MAP. — EQ_out" />
-<meta property="og:description" content="EQ in MAP." />
+<meta property="og:title" content="一元回归 — lm_res" />
+<meta property="og:description" content="一元回归" />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -132,33 +132,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>EQ in MAP.</h1>
+    <h1>一元回归</h1>
     
-    <div class="hidden name"><code>EQ_out.Rd</code></div>
+    <div class="hidden name"><code>lm_res.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>EQ in MAP.</p>
+    <p>一元回归</p>
     </div>
 
-    <pre class="usage"><span class='fu'>EQ_out</span>(<span class='no'>dim2_score</span>, <span class='kw'>zscore</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
+    <pre class="usage"><span class='fu'>lm_res</span>(<span class='kw'>Y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>X</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>Data</span>, <span class='kw'>modelout</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dim2_score</th>
-      <td><p>二级维度分数</p></td>
+      <th>Y</th>
+      <td><p>检验变量</p></td>
     </tr>
     <tr>
-      <th>zscore</th>
-      <td><p>=1时输出为EQ的Z分数，默认为十分导出分</p></td>
+      <th>X</th>
+      <td><p>自变量</p></td>
+    </tr>
+    <tr>
+      <th>Data</th>
+      <td><p>包含Y和X的数据表</p></td>
+    </tr>
+    <tr>
+      <th>modelout</th>
+      <td><p>是否输出模型检验结果</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>EQ维度分数</p>
+    <p>回归系数或模型检验结果</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

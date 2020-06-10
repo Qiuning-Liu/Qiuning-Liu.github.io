@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EQ in MAP. — EQ_out • RDDQ</title>
+<title>计算SE--给定theta — test.info • RDDQ</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="EQ in MAP. — EQ_out" />
-<meta property="og:description" content="EQ in MAP." />
+<meta property="og:title" content="计算SE--给定theta — test.info" />
+<meta property="og:description" content="计算SE--给定theta" />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -132,33 +132,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>EQ in MAP.</h1>
+    <h1>计算SE--给定theta</h1>
     
-    <div class="hidden name"><code>EQ_out.Rd</code></div>
+    <div class="hidden name"><code>test.info.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>EQ in MAP.</p>
+    <p>计算SE--给定theta</p>
     </div>
 
-    <pre class="usage"><span class='fu'>EQ_out</span>(<span class='no'>dim2_score</span>, <span class='kw'>zscore</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
+    <pre class="usage"><span class='fu'>test.info</span>(<span class='no'>theta</span>, <span class='no'>item.par</span>, <span class='no'>BID</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dim2_score</th>
-      <td><p>二级维度分数</p></td>
+      <th>theta</th>
+      <td><p>给定能力值</p></td>
     </tr>
     <tr>
-      <th>zscore</th>
-      <td><p>=1时输出为EQ的Z分数，默认为十分导出分</p></td>
+      <th>item.par</th>
+      <td><p>题目参数</p></td>
+    </tr>
+    <tr>
+      <th>BID</th>
+      <td><p>题维对应</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>EQ维度分数</p>
+    <p>返回se和block信息量（扩展结构）</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
