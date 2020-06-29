@@ -2,6 +2,7 @@ reference:
 - title: MAP
   desc: 与MAP相关的计算函数
   contents:
+  - '`MAP_ALL`'
   - '`dim1_MAP`'
   - '`dim1_NORM`'
   - '`dim2_norm_gh`'
@@ -9,7 +10,6 @@ reference:
   - '`dim2_score1`'
   - '`dim2_score2`'
   - '`EQ_out`'
-  - '`EQ_tran`'
   - '`tran_map`'
   - '`tran_map_bi`'
   - '`leader_style`'
@@ -23,7 +23,6 @@ reference:
   contents:
   - '`pofit_15value`'
   - '`pofit_4value`'
-  - '`pofit_4value_map`'
   - '`pofit_map`'
 - title: 其他产品
   desc: ~
@@ -44,7 +43,6 @@ reference:
   - '`Z_to_ten`'
   - '`selec_rate`'
   - '`split_col`'
-  - '`peo_stat`'
 
 toc:
   depth: 2
