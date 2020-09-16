@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">RDDQ</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.9</span>
       </span>
     </div>
 
@@ -108,66 +108,70 @@
 </h1></div>
 <p>RDDQ包主要用于计算MAP和POFIT产品的常模、导出分数，也可用于导出部分html版本的报告。也支持部分其他产品的常模计算，例如BST、PPF、EQT等。也可计算题目备择率、人口学统计等。</p>
 <blockquote>
-<p>2020年6月10日，新增MAP-IRT版本的一级维度分数、试卷信息量、维度SE的计算函数；新增人才画像数据分析函数</p>
+<p>2020年9月16日，新增MAP作答一致性函数(res_consistency),MAPIRT计分原始选择转换函数(order_key),更新tran_map,selec_rate</p>
 </blockquote>
 <blockquote>
 <p>2020年6月28日，删除3个不常用函数，新增MAP_ALL用于导出全版MAP分数</p>
 </blockquote>
-<p>ps:这个包是2018年秋宁同志在核验常模系统计算准确性时顺便开发的，是当时工作的一个产物，函数写的略显粗糙，但准确性来说应该没什么问题（如果有问题，那来找我吧😤）。</p>
+<blockquote>
+<p>2020年6月10日，新增MAP-IRT版本的一级维度分数、试卷信息量、维度SE的计算函数；新增人才画像数据分析函数</p>
+</blockquote>
+<p>ps:这个包是2018年秋宁同志在核验常模系统计算准确性时顺便开发的，是当时工作的一个产物，函数写的略显粗糙，但准确性来说应该没什么问题……</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <div class="sourceCode" id="cb1"><pre class="r"><span class="co"># 安装这个包之前，需要先安装以下几个包</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'dplyr'</span>, <span class="st">'tidyr'</span>, <span class="st">'data.table'</span>, <span class="st">'openxlsx'</span>, <span class="st">'tidyverse'</span>))
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'dplyr'</span>, <span class="st">'tidyr'</span>, <span class="st">'data.table'</span>, <span class="st">'openxlsx'</span>, <span class="st">'tidyverse'</span>,<span class="st">'broom'</span>,<span class="st">'nloptr'</span>))
 
 <span class="co"># RDDQ包的压缩包需要到智鼎服务器上找一下（下载最新版本哟）：</span>
-<span class="co"># \\192.168.1.134\public\3-智鼎优源\4-常模计算\7、常模计算产出\Rcode归档</span>
-<span class="no">path</span> <span class="kw">&lt;-</span> <span class="st">"你存压缩包的路径/RDDQ_1.9.6.tar.gz"</span>
+<span class="co">#\\192.168.1.134\public\3-智鼎优源\4-常模计算\7、常模计算产出\Rcode归档</span>
+<span class="no">path</span> <span class="kw">&lt;-</span> <span class="st">"你存压缩包的路径/RDDQ_1.9.9.tar.gz"</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="no">path</span>, <span class="kw">repos</span> <span class="kw">=</span> <span class="kw">NULL</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"source"</span>)</pre></div>
-<p>好了，如果你看到console里有<strong>好了</strong>俩中文字，或<strong>success</strong>，你就成功装上了嘻嘻嘻😻。</p>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>加载包</p>
+<div id="加载包" class="section level3">
+<h3 class="hasAnchor">
+<a href="#%E5%8A%A0%E8%BD%BD%E5%8C%85" class="anchor"></a>加载包</h3>
 <div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">RDDQ</span>)</pre></div>
-<p>然后你就可以开始玩耍了，在使用任何一个函数之前，请务必看清楚函数内各个参数的要求哦。不然很容易算错数据。 下面列举一些经常出错的地方吧：</p>
-<div id="1在dim1_map这个函数中参数的指定非常重要" class="section level3">
+</div>
+<div id="mapv20-全版分数计算" class="section level3">
 <h3 class="hasAnchor">
-<a href="#1%E5%9C%A8dim1_map%E8%BF%99%E4%B8%AA%E5%87%BD%E6%95%B0%E4%B8%AD%E5%8F%82%E6%95%B0%E7%9A%84%E6%8C%87%E5%AE%9A%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81" class="anchor"></a>1、在<code>dim1_MAP</code>这个函数中，参数的指定非常重要↓</h3>
-<div class="sourceCode" id="cb3"><pre class="r">  <span class="co"># dat为转换后的-1,0,1计分的MAP数据</span>
-  <span class="co"># data_tran 为题维对应excel表格，即题目的维度归属</span>
-  <span class="co"># type=1时函数输出为维度均分，type=10时函数输出为维度10分</span>
-  <span class="co"># item为1时，不计分题目不参与计分，item为2时，全部题目参与计分</span>
-  <span class="no">res_dim</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/dim1_MAP.html">dim1_MAP</a></span>(<span class="kw">dat</span> <span class="kw">=</span> <span class="no">res2</span>, <span class="kw">data_tran</span> <span class="kw">=</span> <span class="no">data_tran</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="fl">1</span>,<span class="kw">item</span><span class="kw">=</span><span class="fl">1</span>)
-  <span class="no">res_dim10</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/dim1_MAP.html">dim1_MAP</a></span>(<span class="kw">dat</span> <span class="kw">=</span> <span class="no">res2</span>, <span class="kw">data_tran</span> <span class="kw">=</span> <span class="no">data_tran</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="fl">10</span>,<span class="kw">item</span><span class="kw">=</span><span class="fl">1</span>)
-  <span class="no">res_dim</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/dim1_MAP.html">dim1_MAP</a></span>(<span class="kw">dat</span> <span class="kw">=</span> <span class="no">res2</span>, <span class="kw">data_tran</span> <span class="kw">=</span> <span class="no">data_tran</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="fl">1</span>,<span class="kw">item</span><span class="kw">=</span><span class="fl">2</span>)</pre></div>
+<a href="#mapv20-%E5%85%A8%E7%89%88%E5%88%86%E6%95%B0%E8%AE%A1%E7%AE%97" class="anchor"></a>MAPV2.0 全版分数计算</h3>
+<div class="sourceCode" id="cb3"><pre class="r">
+<span class="fu"><a href="reference/MAP_ALL.html">MAP_ALL</a></span>(<span class="no">data</span>, <span class="no">data_tran</span>, <span class="no">weights</span>, <span class="no">weights2</span>, <span class="no">norm</span>, <span class="kw">file</span> <span class="kw">=</span> <span class="st">"MAP-"</span>)
+<span class="co"># data为 拆分好的数据，含有214列作答数据，T开头</span>
+<span class="co"># weights 36项胜任力权重表</span>
+<span class="co"># weights2  MAP其他模块权重表</span>
+<span class="co"># norm  MAP常模文件</span>
+<span class="co"># file 指定写出文件名称</span></pre></div>
 </div>
-<div id="2a-b数据01数据" class="section level3">
+<div id="常模计算" class="section level3">
 <h3 class="hasAnchor">
-<a href="#2a-b%E6%95%B0%E6%8D%AE01%E6%95%B0%E6%8D%AE" class="anchor"></a>2、A-B数据👉01数据</h3>
-<p>在进行MAP的数据转换时，使用<code>tran_map</code>这个函数，但老MAP和新MAP-R的区别在于一个没有负向计分题目，一个有部分负向计分题目，因此需指定哪些题目为负向计分，然后在<code>tran_map</code>里指定<code>tran=tran</code>即可↓</p>
-<div class="sourceCode" id="cb4"><pre class="r">  <span class="no">tran</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span>(<span class="no">data_tran</span>$<span class="no">正负向</span> <span class="kw">==</span> <span class="st">"-"</span>)
-  <span class="no">res2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/tran_map.html">tran_map</a></span>(<span class="no">dat</span>,<span class="kw">tran</span><span class="kw">=</span><span class="no">tran</span>) <span class="co"># MAP-R</span>
-  <span class="no">res2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/tran_map.html">tran_map</a></span>(<span class="no">dat</span>) <span class="co"># 老MAP</span></pre></div>
+<a href="#%E5%B8%B8%E6%A8%A1%E8%AE%A1%E7%AE%97" class="anchor"></a>常模计算</h3>
+<div class="sourceCode" id="cb4"><pre class="r">
+<span class="fu"><a href="reference/dim1_NORM.html">dim1_NORM</a></span>(<span class="no">res_dim</span>, <span class="kw">zscore</span> <span class="kw">=</span> <span class="fl">0</span>)
+<span class="co"># res_dim 为用于计算常模的维度分数</span>
+<span class="co"># zscore =0时导出常模，=1时出标准化后的Z分数</span></pre></div>
 </div>
-<div id="3计算常模与标准分数转换" class="section level3">
+<div id="回归分析" class="section level3">
 <h3 class="hasAnchor">
-<a href="#3%E8%AE%A1%E7%AE%97%E5%B8%B8%E6%A8%A1%E4%B8%8E%E6%A0%87%E5%87%86%E5%88%86%E6%95%B0%E8%BD%AC%E6%8D%A2" class="anchor"></a>3、计算常模与标准分数转换</h3>
-<p><code>scale</code>是用于将数据进行标准化的函数，它的输出包括标准化后的数据、均值<code>center</code>、标准差<code>scale</code>三个部分。 该函数可以指定均值和标准差，进而根据特定分布标准化数据。此函数在算常模、导出分数上起到了<strong>重要作用</strong>。 此处需要提醒的是，当计算任何数据时，常模数据与分数数据的维度顺序必须一致。也就是下方示例中的，dim2_score和srl_M,srl_SD的维度顺序需一致（不明白没关系，用的时候就知道了🤞）。 这种数据转换不止MAP可以用，只要是需要通过常模进行数据转换的操作都可以的！</p>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="no">dim2_zscore</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span>(<span class="no">res_dim</span>)  <span class="co">#将维度均分进行标准化</span>
-<span class="no">srl_zscore</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span>(<span class="no">dim2_score</span>,<span class="kw">center</span> <span class="kw">=</span> <span class="no">srl_M</span>, <span class="kw">scale</span> <span class="kw">=</span> <span class="no">srl_SD</span>)  <span class="co">#根据常模转换Z分数</span>
-<span class="no">norm</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/dim1_NORM.html">dim1_NORM</a></span>(<span class="no">res_dim</span>) <span class="co"># 这是封装的一个可直接输出标准化常模结果的函数，可直接使用哦</span></pre></div>
+<a href="#%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90" class="anchor"></a>回归分析</h3>
+<div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="reference/lm_res.html">lm_res</a></span>(<span class="kw">Y</span> <span class="kw">=</span> <span class="kw">NULL</span>, <span class="kw">X</span> <span class="kw">=</span> <span class="kw">NULL</span>, <span class="no">Data</span>, <span class="kw">modelout</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<span class="co"># Y为因变量</span>
+<span class="co"># X为自变量</span>
+<span class="co"># Data为包含Y和X的数据表</span>
+<span class="co"># modelout 是否输出模型检验结果</span></pre></div>
 </div>
-<div id="4二级维度分数计算" class="section level3">
+<div id="均值统计" class="section level3">
 <h3 class="hasAnchor">
-<a href="#4%E4%BA%8C%E7%BA%A7%E7%BB%B4%E5%BA%A6%E5%88%86%E6%95%B0%E8%AE%A1%E7%AE%97" class="anchor"></a>4、二级维度分数计算</h3>
-<p>在需要用到权重来计算分数时，需要注意权重文件的维度顺序是否和你算出的维度顺序一致，如果不一致需调整一致的顺序，然后再放入到<code>dim2_score</code>函数族中。<code>dim2_score</code>函数族包含三个函数：<code>dim2_score</code>,<code>dim2_score1</code>,<code>dim2_score2</code>。具体如何使用，见函数页介绍。</p>
+<a href="#%E5%9D%87%E5%80%BC%E7%BB%9F%E8%AE%A1" class="anchor"></a>均值统计</h3>
+<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="reference/mean_stat.html">mean_stat</a></span>(<span class="kw">Y</span> <span class="kw">=</span> <span class="kw">NULL</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="no">Data</span>)
+<span class="co"># Y待分析变量名称</span>
+<span class="co"># group 分组变量名称</span>
+<span class="co"># Data 含Y和group的数据表</span></pre></div>
 </div>
-</div>
-<div id="拜拜" class="section level2">
-<h2 class="hasAnchor">
-<a href="#%E6%8B%9C%E6%8B%9C" class="anchor"></a>拜拜👀</h2>
 </div>
 </div>
   </div>
